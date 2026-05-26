@@ -16,7 +16,6 @@ class Student(models.Model):
 
 
 class StudentIDCard(models.Model):
-    """Model for student ID cards - One-to-One relationship with Student"""
     student = models.OneToOneField(Student,on_delete=models.CASCADE,related_name='id_card',verbose_name="Student")
     card_number = models.CharField(max_length=20, unique=True, verbose_name="Card Number")
     issue_date = models.DateField(verbose_name="Issue Date")
@@ -31,7 +30,6 @@ class StudentIDCard(models.Model):
 
 
 class Professor(models.Model):
-    """Model for professors"""
     first_name = models.CharField(max_length=100, verbose_name="First Name")
     last_name = models.CharField(max_length=100, verbose_name="Last Name")
     email = models.EmailField(unique=True, verbose_name="Email")
@@ -46,7 +44,7 @@ class Professor(models.Model):
 
 
 class Semester(models.Model):
-    name = models.CharField(max_length=100,unique=True,verbose_name="Semester Name",help_text="Ex: Summer Semester 2025")
+    name = models.CharField(max_length=100,unique=True,verbose_name="Semester Name",default="")
     start_date = models.DateField(verbose_name="Start Date")
     end_date = models.DateField(verbose_name="End Date")
     
@@ -60,7 +58,7 @@ class Semester(models.Model):
 
 
 class Course(models.Model):
-    name = models.CharField(max_length=200, verbose_name="Course Name")
+    name = models.CharField(max_length=200, verbose_name="Course Name",blank=True, null=True)    
     code = models.CharField(max_length=20, unique=True, default="", verbose_name="Course Code")    
     professor = models.ForeignKey(Professor,on_delete=models.CASCADE,related_name='courses',verbose_name="Professor")
     semester = models.ForeignKey(Semester,on_delete=models.CASCADE,related_name='courses',verbose_name="Semester")
