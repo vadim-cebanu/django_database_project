@@ -73,7 +73,7 @@ class Migration(migrations.Migration):
                 ('content', models.TextField(verbose_name='Content')),
                 ('objectives', models.TextField(verbose_name='Objectives')),
                 ('prerequisites', models.TextField(blank=True, verbose_name='Prerequisites')),
-                ('course', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='description', to='sales.course', verbose_name='Course')),
+                ('course', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='description', to='university.course', verbose_name='Course')),
             ],
             options={
                 'verbose_name': 'Course Description',
@@ -83,17 +83,17 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='course',
             name='professor',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='courses', to='sales.professor', verbose_name='Professor'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='courses', to='university.professor', verbose_name='Professor'),
         ),
         migrations.AddField(
             model_name='course',
             name='semester',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='courses', to='sales.semester', verbose_name='Semester'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='courses', to='university.semester', verbose_name='Semester'),
         ),
         migrations.AddField(
             model_name='course',
             name='students',
-            field=models.ManyToManyField(blank=True, related_name='courses', to='sales.student', verbose_name='Enrolled Students'),
+            field=models.ManyToManyField(blank=True, related_name='courses', to='university.student', verbose_name='Enrolled Students'),
         ),
         migrations.CreateModel(
             name='StudentIDCard',
@@ -102,7 +102,7 @@ class Migration(migrations.Migration):
                 ('card_number', models.CharField(max_length=20, unique=True, verbose_name='Card Number')),
                 ('issue_date', models.DateField(verbose_name='Issue Date')),
                 ('expiry_date', models.DateField(verbose_name='Expiry Date')),
-                ('student', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='id_card', to='sales.student', verbose_name='Student')),
+                ('student', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='id_card', to='university.student', verbose_name='Student')),
             ],
             options={
                 'verbose_name': 'Student ID Card',

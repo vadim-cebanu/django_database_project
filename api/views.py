@@ -12,7 +12,7 @@ class HelloViewSet(viewsets.ViewSet):
     
     def list(self, request):
         data = {
-            'message': 'Welcome to your Django REST Framework API!',
+            'message': 'Welcome to your Django REST Framework API test!',
             'timestamp': datetime.now()
         }
         serializer = HelloSerializer(data)
