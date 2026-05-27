@@ -50,7 +50,7 @@ class Semester(models.Model):
 class Course(models.Model):
     name = models.CharField(max_length=200, verbose_name="Course Name", blank=True, null=True)
     code = models.CharField(max_length=20, unique=True, default="", verbose_name="Course Code")
-    professor = models.ForeignKey(Professor, on_delete=models.PROTECT, related_name='courses', verbose_name="Professor")
+    professor = models.ForeignKey(Professor, on_delete=models.SET_NULL, null=True, blank=True, related_name='courses', verbose_name="Professor")
     semester = models.ForeignKey(Semester, on_delete=models.CASCADE, related_name='courses', verbose_name="Semester")
     students = models.ManyToManyField(Student, related_name='courses', verbose_name="Enrolled Students", blank=True)
 
