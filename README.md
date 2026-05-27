@@ -1,4 +1,4 @@
-# django_database_project
+#  core
 
 Django project with Django REST Framework automatically generated.
 
@@ -28,7 +28,7 @@ python manage.py runserver
 
 ## Structure
 
-- `django_database_project/` - Main settings
+- `core/` - Main settings
 - `api/` - Sample app with API
 - `venv/` - Virtual environment
 - `manage.py` - Django management script
